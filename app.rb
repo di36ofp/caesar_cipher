@@ -1,18 +1,28 @@
 class CaesarCipher
   attr_reader :string_to_cipher
-  def initialize string_to_cipher
+  def initialize string_to_cipher, *position
     @string_to_cipher = string_to_cipher
+    @position = !position.nil? ? 3 : position
   end
-  def shift position
-    position = !position.nil? ? position : 1
-    code = ('a'.ord..'z'.ord).to_a
+  def cipher action
+    shift action
+  end
+
+  private
+
+  def shift action
+    code = ('a'..'z').to_a
     string_shifted = ""
 
     @string_to_cipher.downcase.split('').each do | char |
       if char != " "
-        tmp_position = char.ord + position
-        tmp_cahr = code.index(tmp_position)
-        string_shifted += code[tmp_cahr].chr
+        case action
+        when 'right'
+          code_index = ( code.index( char ) + @position ) % 26
+        when 'left'
+          code_index = ( code.index( char ) - @position ) % 26
+        end
+        string_shifted +=  code[code_index]
       else
         string_shifted += char
       end

@@ -14,7 +14,7 @@ describe CaesarCipher do
       end
 
       it "shift the string one position" do
-        expect(caesar.shift(1)).to eq('tusjoh')
+        expect(caesar.cipher(1)).to eq('tusjoh')
       end
     end
   end
