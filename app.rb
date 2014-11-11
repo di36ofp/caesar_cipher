@@ -1,8 +1,8 @@
 class CaesarCipher
   attr_reader :string_to_cipher
-  def initialize string_to_cipher, *position
+  def initialize string_to_cipher, position
     @string_to_cipher = string_to_cipher
-    @position = !position.nil? ? 3 : position
+    @position = !position.nil? ? position : 3
   end
   def cipher action
     shift action

@@ -5,20 +5,17 @@ describe CaesarCipher do
 
   describe "Caesar Cipher" do
     context "Get the string" do
-      let(:caesar) do
-        CaesarCipher.new('string')
-      end
 
       it "show the string" do
-        expect(caesar.string_to_cipher).to eq('string')
+        expect(CaesarCipher.new('string', 0).string_to_cipher).to eq('string')
       end
 
-      it "shift the string one position" do
-        expect(caesar.cipher).to eq('tusjoh')
+      it "shift the string 1 position" do
+        expect(CaesarCipher.new('string', 1).cipher('right')).to eq('tusjoh')
       end
 
       it "shift the string 3 position to left" do
-        expect(caesar.cipher('left')).to eq('pqofkd')
+        expect(CaesarCipher.new('string', 3).cipher('left')).to eq('pqofkd')
       end
     end
   end
